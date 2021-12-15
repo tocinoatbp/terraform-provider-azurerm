@@ -266,7 +266,7 @@ func resourceMonitorMetricAlert() *pluginsdk.Resource {
 						"ignore_data_before": {
 							Type:         pluginsdk.TypeString,
 							Optional:     true,
-							ValidateFunc: validation.IsRFC3339Time,
+							//ValidateFunc: validation.IsRFC3339Time,
 						},
 						"skip_metric_validation": {
 							Type:     pluginsdk.TypeBool,
