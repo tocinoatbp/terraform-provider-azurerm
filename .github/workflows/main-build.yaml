@@ -1,0 +1,21 @@
+name: Grabit
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.17.3'
+      - run: bash scripts/gogetcookie.sh
+      - run: make tools
+      - run: GOOS=linux go build -o outputs/terraform-provider-azurerm_v2.86.0_x5 .      
+      - name: Publish
+        uses: actions/upload-artifact@v2
+        with: 
+          name: published-provider
+          path: outputs
